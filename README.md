@@ -1,5 +1,5 @@
 # Terminal-Player
-> 一个根据文件hash操作的终端播放器.
+> 一个根据文件hash操作的,基于sox的终端播放器.
 
 ![演示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202206241928082.png)
 
@@ -27,7 +27,7 @@ nano data/conf.yaml
 python3 main.py
 ```
 
-运行主程序.
+运行**主程序**.
 
 > 英文版本可输入`python3 en_main.py`运行.
 
@@ -50,6 +50,8 @@ python3 main.py
 根据每一个文件独一无二的hash值确定,所以即使添加新的音乐到目录也**没有问题**!
 
 > 注释也挺清楚的..
+
+播放器使用的是`sox`(这我肯定不会做啊).
 
 ## 尾声
 
