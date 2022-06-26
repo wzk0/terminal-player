@@ -91,9 +91,14 @@ def show_songsls():
 ##通过输入序号返回歌单的hash列表
 def back_hash(ipt):
 	ls=os.listdir(read.list_dir)
-	lenth=len(ls)-1
+	lenth=len(ls)
 	list_list=dict(zip(range(0,lenth),ls))
 	with open(read.list_dir+list_list[int(ipt)])as f:
 		f=f.read()
 	f=f.split('\n')
 	return f[:-1]
+
+def like(ipt):
+	hash_list=make_list(ipt)
+	with open(read.list_dir+'我的收藏','a')as f:
+		f.write('\n'.join(hash_list)+'\n')
