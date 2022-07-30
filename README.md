@@ -1,10 +1,10 @@
 # Terminal-Player
 
-![演示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202206241928082.png)
+![演示](https://raw.githubusercontent.com/wzk0/photo/main/202206241928082.png)
 
-![演示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/%E6%88%AA%E5%9B%BE%202022-07-30%2014-43-27.png)
+![演示](https://raw.githubusercontent.com/wzk0/photo/main/%E6%88%AA%E5%9B%BE%202022-07-30%2014-43-27.png)
 
-![演示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/%E6%88%AA%E5%9B%BE%202022-07-30%2016-04-27.png)
+![演示](https://raw.githubusercontent.com/wzk0/photo/main/%E6%88%AA%E5%9B%BE%202022-07-30%2016-04-27.png)
 
 ## 介绍
 
