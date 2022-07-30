@@ -23,13 +23,12 @@ def get_dirhash():
 	songs_list=dict(zip(songs_name,songs_hash))
 	return songs_list
 
-##美化输出序号和对照的歌名
-def show_list():
-	songs_name=list(get_dirhash().keys())
-	lenth=len(songs_name)-1
+##美化输出序号和列表内容
+def show_ls(names):
+	lenth=len(names)-1
 	zero=0
 	while zero<=lenth:
-		print(str(zero)+'. | '+str(songs_name[zero]))
+		print('\033[1;35;44m'+str(zero)+'.\033[0m | \033[0m\033[1;4;36m'+str(names[zero])+'\033[0m')
 		zero+=1
 
 ##通过输入序号生成歌曲的hash列表
@@ -57,12 +56,13 @@ def back_name(hash_list):
 	return name_list
 
 ##通过列表播放歌曲
-def play(thing):
-	for name in thing:
-		name=name.replace('(','\(')
-		name=name.replace(')','\)')
-		name=name.replace(' ','\ ')
-		os.system('play '+read.music_dir+name)
+def play(thing,act):
+	if thing=='a':
+		os.system(act+read.music_dir+'*')
+	else:
+		for name in thing:
+			name=read.get_good_name(name)
+			os.system(act+read.music_dir+name)
 
 ##写入hash到文件
 def write_into(ipt,list_name):
@@ -74,19 +74,8 @@ def write_into(ipt,list_name):
 def play_hash(hsh):
 	songs_list=dict(zip(list(get_dirhash().values()),list(get_dirhash().keys())))
 	name=songs_list[hsh]
-	name=name.replace('(','\(')
-	name=name.replace(')','\)')
-	name=name.replace(' ','\ ')
+	name=read.get_good_name(name)
 	os.system('play '+read.music_dir+name)
-
-##美化输出序号和对照的歌单
-def show_songsls():
-	ls=os.listdir(read.list_dir)
-	lenth=len(ls)-1
-	zero=0
-	while zero<=lenth:
-		print(str(zero)+'. | '+str(ls[zero]))
-		zero+=1
 
 ##通过输入序号返回歌单的hash列表
 def back_hash(ipt):
@@ -98,7 +87,56 @@ def back_hash(ipt):
 	f=f.split('\n')
 	return f[:-1]
 
+##根据输入序号获取歌单路径
+def get_path(ipt):
+	ls=os.listdir(read.list_dir)
+	lenth=len(ls)
+	list_list=dict(zip(range(0,lenth),ls))
+	return read.list_dir+list_list[int(ipt)]
+
+##删除歌单文件
+def rm_ls(ipt):
+	list_list=get_path(ipt)
+	os.system('rm -rf '+list_list)
+
+##收藏音乐
 def like(ipt):
 	hash_list=make_list(ipt)
 	with open(read.list_dir+'我的收藏','a')as f:
 		f.write('\n'.join(hash_list)+'\n')
+
+##删除所有
+def dl_all_file():
+	os.system('rm -rf '+read.list_dir+'*')
+
+##清空所有
+def clear_all():
+	ls=os.listdir(read.list_dir)
+	os.system('rm -rf '+read.list_dir+'*')
+	for l in ls:
+		os.system('touch '+read.list_dir+l)
+
+##获取补集
+def get_b(ipt,hsh):
+	if ipt=='a':
+		os.system('rm -rf '+path)
+		os.system('touch '+path)
+	else:
+		ls=ipt.split(' ')
+		wd=[]
+		for i in ls:
+			wd.append(hsh[int(i)])
+		b=list(set(hsh)-(set(wd)))
+		return b
+
+##删除歌单内音乐
+def rm_ls_inside(b,path):
+	os.system('rm -rf '+path)
+	with open(path,'w')as f:
+		f.write('\n'.join(b)+'\n')
+
+##新旧歌单作比较
+def compare(b):
+	nms=back_name(b)
+	print('\n')
+	show_ls(nms)
