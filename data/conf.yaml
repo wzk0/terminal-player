@@ -4,4 +4,8 @@ music_dir: ''
 list_dir: './data/歌单/'
 ##存放歌单的文件夹
 
+player_core: 'play '
+##play为sox播放器,cvlc为vlc播放器,请务必带上最后的空格
+##如果使用cvlc,在每首歌的切换时间会有暂停,需要手动Ctrl C切歌
+
 ##务必以/结尾

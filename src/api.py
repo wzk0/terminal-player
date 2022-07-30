@@ -75,7 +75,7 @@ def play_hash(hsh):
 	songs_list=dict(zip(list(get_dirhash().values()),list(get_dirhash().keys())))
 	name=songs_list[hsh]
 	name=read.get_good_name(name)
-	os.system('play '+read.music_dir+name)
+	os.system(read.player_core+read.music_dir+name)
 
 ##通过输入序号返回歌单的hash列表
 def back_hash(ipt):

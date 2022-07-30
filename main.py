@@ -16,12 +16,12 @@ if ipt=='0':
 	ipt=input('\033[1;7;36m请输入歌曲前的序号以播放(可以用空格分隔开多个序号,播放全部请输入a):\033[0m')
 	print('\n\033[1;36m你可以通过快捷键\033[0m\033[1;32mCtrl C\033[0m\033[1;36m停止播放或切换下一首歌!\033[0m')
 	if ipt=='a':
-		api.play('a','play ')
+		api.play('a',read.player_core)
 		print('\033[1;32m\n完成!\n\033[0m')
 		sys.exit(1)
 	else:
 		name=api.back_name(api.make_list(ipt))
-		api.play(name,'play ')
+		api.play(name,read.player_core)
 		print('\033[1;36m是/否(y/n)把刚刚播放的音乐添加入歌单?\033[0m')
 		chs=input('\033[1;7;36my / n :\033[0m')
 		if chs=='y':
@@ -50,7 +50,10 @@ if ipt=='2':
 	print('\033[1;32m\n完成!\n\033[0m')
 	ipt=input('\033[1;7;36m请输入歌曲前的序号,每个序号间用空格分隔开:\033[0m')
 	name=api.back_name(api.make_list(ipt))
-	list_name=input('\033[1;7;36m请为这张歌单命名:\033[0m')
+	print('\n\033[1;36m歌单正在加载中...\n\033[0m')
+	print('\033[1;36m目前已有的歌单:\033[0m\n')
+	api.show_ls(os.listdir(read.list_dir))
+	list_name=input('\033[1;7;36m\n请为这张歌单命名:\033[0m')
 	api.write_into(ipt,list_name)
 	print('\033[1;32m\n完成!\n\033[0m')
 	sys.exit(1)

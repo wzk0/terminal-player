@@ -8,7 +8,9 @@
 
 ## 介绍
 
-这是一个根据文件hash操作的,基于sox的终端播放器.
+这是一个根据文件hash操作的,基于`sox`或者`cvlc`的终端播放器.
+
+> `cvlc`是`vlc`的终端版本.
 
 你可以指定一个塞满音频文件的目录为音乐夹,进行`创建并且播放歌单`,`收藏并且播放单曲`,`删除或清理歌单`等操作.
 
@@ -18,6 +20,14 @@
 
 ```bash
 git clone https://github.com/wzk0/terminal-player
+```
+
+安装`sox`或`vlc`:
+
+```
+sudo apt install sox -y
+或
+sudo apt install vlc -y
 ```
 
 随后,在所在文件夹打开终端,输入:
@@ -68,7 +78,7 @@ python3 main.py
 
 > 注释也挺清楚的..
 
-播放器使用的是`sox`(这我肯定不会做啊).
+播放器核心使用的是`sox`或`cvlc`(这我肯定不会做啊).
 
 ## 尾声
 
