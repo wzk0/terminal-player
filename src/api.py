@@ -28,7 +28,7 @@ def show_ls(names):
 	lenth=len(names)-1
 	zero=0
 	while zero<=lenth:
-		print('\033[1;35;44m'+str(zero)+'.\033[0m | \033[0m\033[1;4;36m'+str(names[zero])+'\033[0m')
+		print('\033[1;35;44m'+str(zero)+'.\033[0m | \033[0m\033[1;36m'+str(names[zero])+'\033[0m')
 		zero+=1
 
 ##通过输入序号生成歌曲的hash列表
