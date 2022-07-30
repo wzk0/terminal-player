@@ -138,5 +138,5 @@ def rm_ls_inside(b,path):
 ##新旧歌单作比较
 def compare(b):
 	nms=back_name(b)
-	print('\n')
+	os.system('clear')
 	show_ls(nms)
