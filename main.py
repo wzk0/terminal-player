@@ -106,17 +106,22 @@ if ipt=='4':
 		api.show_ls(nms)
 		print('\033[1;32m\n完成!\n\033[0m')
 		ipt=input('\033[1;7;36m请输入歌曲前的序号以删除(可以用空格分隔开多个序号,删除全部请输入a):\033[0m')
-		b=api.get_b(ipt,hsh)
-		api.compare(b)
-		print('\033[1;36m\n新歌单将会如上图所示,是/否(y/n)应用?\033[0m')
-		chs=input('\033[1;7;36my / n :\033[0m')
-		if chs=='y':
-			api.rm_ls_inside(b,path)
+		if ipt=='a':
+			b=api.get_b('a',hsh,path)
 			print('\033[1;32m\n完成!\n\033[0m')
 			sys.exit(1)
 		else:
-			print('\033[1;32m\n已撤销操作!\n\033[0m')
-			sys.exit(1)
+			b=api.get_b(ipt,hsh,path)
+			api.compare(b)
+			print('\033[1;36m\n新歌单将会如上图所示,是/否(y/n)应用?\033[0m')
+			chs=input('\033[1;7;36my / n :\033[0m')
+			if chs=='y':
+				api.rm_ls_inside(b,path)
+				print('\033[1;32m\n完成!\n\033[0m')
+				sys.exit(1)
+			else:
+				print('\033[1;32m\n已撤销操作!\n\033[0m')
+				sys.exit(1)
 		
 	if ipt=='3':
 		api.clear_all()

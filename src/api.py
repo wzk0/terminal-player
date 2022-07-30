@@ -117,7 +117,7 @@ def clear_all():
 		os.system('touch '+read.list_dir+l)
 
 ##获取补集
-def get_b(ipt,hsh):
+def get_b(ipt,hsh,path):
 	if ipt=='a':
 		os.system('rm -rf '+path)
 		os.system('touch '+path)
