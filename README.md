@@ -1,8 +1,8 @@
 # Terminal-Player
 
-![演示](https://raw.githubusercontent.com/wzk0/photo/main/202206241928082.png)
+![演示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202210022149432.png)
 
-![演示](https://raw.githubusercontent.com/wzk0/photo/main/%E6%88%AA%E5%9B%BE%202022-07-30%2014-43-27.png)
+![演示](https://ghproxy.com/https://raw.githubusercontent.com/wzk0/photo/main/202210022152595.png)
 
 ![演示](https://raw.githubusercontent.com/wzk0/photo/main/%E6%88%AA%E5%9B%BE%202022-07-30%2016-04-27.png)
 
@@ -84,6 +84,8 @@ python3 main.py
 
 感谢使用!O(∩_∩)O
 
-终端歌词显示引用:
+## 相关
+
+终端歌词显示:
 
 [通过sleep实现的终端lrc歌词文件解析和实时展示.](https://github.com/wzk0/lrc-timely)
