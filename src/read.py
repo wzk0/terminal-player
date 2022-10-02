@@ -11,5 +11,8 @@ conf=yaml.load(open('data/conf.yaml'),Loader=yaml.FullLoader)
 music_dir=conf['music_dir']
 list_dir=conf['list_dir']
 player_core=conf['player_core']
+lrc_path=conf['lrc_path']
+rainbow=conf['rainbow']
+pure_color=conf['pure_color']
 music_dir=get_good_name(music_dir)
 list_dir=get_good_name(list_dir)
