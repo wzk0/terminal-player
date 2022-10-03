@@ -3,8 +3,9 @@ import os
 from . import read
 from threading import Thread
 import time
+import random
 
-def lrc_play(player,lrc_name,lrc_path,music_path):
+def lrc_play(player,lrc_name,lrc_path,music_path,sleep_time):
 	def get_good_name(name):
 		name=name.replace('(','\(')
 		name=name.replace(')','\)')
@@ -35,11 +36,11 @@ def lrc_play(player,lrc_name,lrc_path,music_path):
 			return list(f.read().split('\n'))
 
 	def get(tm):
-		t=tm.split('.')[0].split(':')
+		t=tm.split(':')
 		if t==['']:
 			pass
 		else:
-			return 60*int(t[0])+int(t[1])
+			return 60*int(t[0])+float(t[1])
 
 	def begin(name,w):
 		data=red(name)
@@ -47,26 +48,41 @@ def lrc_play(player,lrc_name,lrc_path,music_path):
 		for i in data:
 			tm=i.replace('[','').split(']')
 			ls.append(tm)
-		for t in ls:
-			tm=t[0]
-			me=ls.index(t)
-			if me==0:
-				needlose=0
-			else:
-				now=ls[me][0]
-				pre=ls[me-1][0]
-				if now=='':
-					pass
-				else:
-					time.sleep(get(now)-get(pre))
+		def do(ls,sleep_time):
+			for t in ls:
+				tm=t[0]
+				me=ls.index(t)
+				if me==0:
 					if read.rainbow:
 						i=random.randint(30,37)
 						z=random.randint(40,47)
 						print('\033[1;'+str(i)+';'+str(z)+'m'+t[1]+'\033[0m')
-					if read.pure_color!=False:
-						print('\033[1;'+read.pure_color+t[1]+'\033[0m')
 					else:
-						print(t[1])
+						if read.pure_color!=False:
+							print('\033[1;'+read.pure_color+t[1]+'\033[0m')
+						else:
+							print(t[1])
+				else:
+					now=ls[me][0]
+					pre=ls[me-1][0]
+					if now=='':
+						pass
+					else:
+						time.sleep(get(now)-get(pre)-sleep_time)
+						if read.rainbow:
+							i=random.randint(30,37)
+							z=random.randint(40,47)
+							print('\033[1;'+str(i)+';'+str(z)+'m'+t[1]+'\033[0m')
+						else:
+							if read.pure_color!=False:
+								print('\033[1;'+read.pure_color+t[1]+'\033[0m')
+							else:
+								print(t[1])
+		if '00:00.00' in ls[0][0]:
+			ls=ls
+		else:
+			ls.insert(0,['00:00.000','\n不规范的歌词文件,已自动修复!'])
+		do(ls,sleep_time)
 
 	def pla(player,file):
 		os.system(player+' '+file)
@@ -150,12 +166,12 @@ def play(thing,act):
 	if thing=='a':
 		for name in os.listdir(read.music_dir):
 			n=name.split('.')[0].split('/')[-1]
-			lrc_play(act,n,read.lrc_path,read.music_dir)
+			lrc_play(act,n,read.lrc_path,read.music_dir,read.sleep_time)
 	else:
 		for name in thing:
 			n=name.split('.')
 			print(n[0])
-			lrc_play(act,n[0],read.lrc_path,read.music_dir)
+			lrc_play(act,n[0],read.lrc_path,read.music_dir,read.sleep_time)
 
 ##写入hash到文件
 def write_into(ipt,list_name):
@@ -168,7 +184,7 @@ def play_hash(hsh):
 	songs_list=dict(zip(list(get_dirhash().values()),list(get_dirhash().keys())))
 	name=songs_list[hsh]
 	n=name.split('.')
-	lrc_play(read.player_core,n[0],read.lrc_path,read.music_dir)
+	lrc_play(read.player_core,n[0],read.lrc_path,read.music_dir,read.sleep_time)
 
 ##通过输入序号返回歌单的hash列表
 def back_hash(ipt):
