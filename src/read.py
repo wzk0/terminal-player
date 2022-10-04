@@ -17,3 +17,5 @@ pure_color=conf['pure_color']
 sleep_time=conf['sleep_time']
 music_dir=get_good_name(music_dir)
 list_dir=get_good_name(list_dir)
+if player_core=='cvlc ':
+	player_core='cvlc --play-and-exit '
