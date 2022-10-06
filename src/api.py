@@ -55,7 +55,7 @@ def lrc_play(player,lrc_name,lrc_path,music_path,sleep_time):
 			return 60*int(t[0])+float(t[1])
 
 	def pla(player,file):
-		os.system(player+' '+file)
+		os.system("%s '%s'"%(player,file))
 
 	def show(dic,ttt,sleep_time):
 		ttt.start()
