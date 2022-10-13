@@ -16,6 +16,7 @@ rainbow=conf['rainbow']
 pure_color=conf['pure_color']
 sleep_time=conf['sleep_time']
 preview=conf['preview']
+analysis=conf['analysis']
 music_dir=get_good_name(music_dir)
 list_dir=get_good_name(list_dir)
 if player_core=='cvlc ':
